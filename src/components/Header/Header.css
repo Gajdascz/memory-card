@@ -1,0 +1,13 @@
+@import url("../../styles/index.css");
+
+header.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--header-and-footer-background);
+  padding: var(--header-padding);
+}
+
+h1.app-header-text {
+  font-size: 2rem;
+}

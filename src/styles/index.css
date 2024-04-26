@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "retro-pixelated";
+  src:
+    url("../../fonts/retro-pixelated.woff2") format("woff2"),
+    url("../../fonts/retro-pixelated.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --color-black: #000000;
+
+  --text-color: var(--color-black);
+  --icon-color: var(--color-black);
+
+  --header-padding: 0.5em;
+  --footer-padding: calc(var(--header-padding) / 2);
+
+  --header-and-footer-background: #c4f0c2cc;
+  --header-and-footer-button-hover-bg: #a4dded;
+  --header-and-footer-button-hover-border: 2px solid var(--icon-color);
+
+  color: var(--text-color);
+  fill: var(--icon-color);
+  background-color: var(--color-primary-background);
+  font-family: "retro-pixelated";
+
+  background-image: url("../../public/app-bg.webp");
+  background-size: cover;
+  background-position: center;
+}
+button,
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border: 2px solid transparent;
+}
+
+button {
+  padding-block: 0;
+  padding-inline: 0;
+  border-radius: 10px;
+}
+.icon-button,
+.header-footer-icon-button {
+  border-radius: 100%;
+  background-color: transparent;
+}
+
+.header-footer-icon-button:hover {
+  background-color: var(--header-and-footer-button-hover-bg);
+  border: var(--header-and-footer-button-hover-border);
+}
+
+svg {
+  width: 40px;
+  height: 40px;
+}

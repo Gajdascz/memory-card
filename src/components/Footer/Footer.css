@@ -1,0 +1,25 @@
+@import url("../../styles/index.css");
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+  gap: 1em;
+  padding: var(--footer-padding);
+  background-color: var(--header-and-footer-background);
+}
+
+.footer-container > .copyright-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25em;
+}
+
+.footer-pixel-copyright-icon {
+  height: 32px;
+  width: 32px;
+}
