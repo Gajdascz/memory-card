@@ -1,0 +1,71 @@
+.loaderContainer {
+  background-color: var(--color-disabled-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
+  --circumference: calc(2 * 45 * pi);
+}
+
+.loaderCircle {
+  fill: none;
+  stroke: var(--color-symbol);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transform: rotate(270deg);
+  transform-origin: 50%;
+  stroke-dasharray: calc(var(--circumference) / 4) calc(3 * var(--circumference) / 4);
+  stroke-dashoffset: var(--circumference);
+  animation: dash 5s linear infinite;
+}
+
+@keyframes dash {
+  0%,
+  12.5% {
+    stroke-dashoffset: calc(var(--circumference));
+  }
+  25%,
+  37.5% {
+    stroke-dashoffset: calc(var(--circumference) * 0.75);
+  }
+  50%,
+  62.5% {
+    stroke-dashoffset: calc((var(--circumference) * 0.5));
+  }
+  75%,
+  87.5% {
+    stroke-dashoffset: calc((var(--circumference) * 0.25));
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* 
+@keyframes dash {
+  0%,
+  12.5% {
+    stroke-dasharray: 270, 360;
+    stroke-dashoffset: 0;
+  }
+  25%,
+  37.5% {
+    stroke-dasharray: 360, 90;
+    stroke-dashoffset: 360;
+  }
+  50%,
+  62.5% {
+    stroke-dasharray: 90, 180;
+    stroke-dashoffset: 90;
+  }
+  75%,
+  87.5% {
+  }
+  100% {
+  }
+} */

@@ -7,53 +7,54 @@
   font-style: normal;
 }
 :root {
-  --color-black: #000000;
+  --color-symbol: #000000;
 
-  --text-color: var(--color-black);
-  --icon-color: var(--color-black);
+  --color-primary: #c4f0c2;
+  --color-primary-translucent: #c4f0c2cc;
+  --color-primary-muted: #e6f2e1;
 
-  --header-padding: 0.5em;
-  --footer-padding: calc(var(--header-padding) / 2);
+  --color-secondary: #ffcc00;
+  --color-secondary-translucent: #ffcc00cc;
+  --color-secondary-muted: #ffeca0;
 
-  --header-and-footer-background: #c4f0c2cc;
-  --header-and-footer-button-hover-bg: #a4dded;
-  --header-and-footer-button-hover-border: 2px solid var(--icon-color);
+  --color-disabled-bg: #ffffff80;
+  --color-disabled-content: #0000004d;
+  --color-disabled-border: #0000001a;
+}
 
-  color: var(--text-color);
-  fill: var(--icon-color);
-  background-color: var(--color-primary-background);
+body {
+  color: var(--color-symbol);
+  fill: var(--color-symbol);
   font-family: "retro-pixelated";
-
-  background-image: url("../../public/app-bg.webp");
+  background-image: url("../../app-bg.webp");
   background-size: cover;
   background-position: center;
 }
-button,
-a {
+
+.button {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--color-primary);
   font-weight: bold;
-  border: 2px solid transparent;
+  border-radius: 25%;
+  padding: 0.15em;
+  border: 2px solid var(--color-symbol);
+}
+.button.disabled {
+  background-color: #ffffff80;
+  color: #0000004d;
+  border: 2px solid #0000001a;
 }
 
-button {
-  padding-block: 0;
-  padding-inline: 0;
-  border-radius: 10px;
-}
-.icon-button,
-.header-footer-icon-button {
-  border-radius: 100%;
-  background-color: transparent;
-}
-
-.header-footer-icon-button:hover {
-  background-color: var(--header-and-footer-button-hover-bg);
-  border: var(--header-and-footer-button-hover-border);
+.button:hover {
+  fill: var(--color-primary);
+  background-color: var(--color-symbol);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 2px 2px var(--color-symbol);
 }
 
 svg {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
 }
