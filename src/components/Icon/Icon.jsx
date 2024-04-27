@@ -5,7 +5,7 @@ import Loading from "../Loading/Loading";
 const icons = {
   sound: React.lazy(() => import("./Svgs/Sound")),
   music: React.lazy(() => import("./Svgs/Music")),
-  questionMark: React.lazy(() => import("./Svgs/QuestionMark")),
+  questionMark: React.lazy(async () => import("./Svgs/QuestionMark")),
   copyright: React.lazy(() => import("./Svgs/Copyright")),
   gitHub: React.lazy(() => import("./Svgs/GitHub")),
 };

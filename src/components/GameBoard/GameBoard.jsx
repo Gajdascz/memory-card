@@ -14,7 +14,6 @@ export default function GameBoard() {
   return (
     <div className={styles.container}>
       <ScoreBoard />
-      <Loading />
       <CardContainer></CardContainer>
     </div>
   );

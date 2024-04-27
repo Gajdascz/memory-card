@@ -6,7 +6,15 @@ export default function Header() {
     <header className={styles.appHeader}>
       <h1>Memory Card</h1>
       <div className={styles.buttonContainer}>
-        <Icon type={"questionMark"} />
+        <button className="button">
+          <Icon type={"sound"} />
+        </button>
+        <button className="button">
+          <Icon type={"music"} />
+        </button>
+        <button className="button">
+          <Icon type={"questionMark"} />
+        </button>
       </div>
     </header>
   );

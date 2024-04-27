@@ -12,12 +12,14 @@
   --color-primary: #c4f0c2;
   --color-primary-translucent: #c4f0c2cc;
   --color-primary-muted: #e6f2e1;
+  --color-primary-darker: #8cb291;
 
   --color-secondary: #ffcc00;
   --color-secondary-translucent: #ffcc00cc;
   --color-secondary-muted: #ffeca0;
+  --color-secondary-darker: #cc9200;
 
-  --color-disabled-bg: #ffffff80;
+  --color-disabled-bg: #615f5f80;
   --color-disabled-content: #0000004d;
   --color-disabled-border: #0000001a;
 }

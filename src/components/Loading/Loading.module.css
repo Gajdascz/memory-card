@@ -1,71 +1,82 @@
 .loaderContainer {
-  background-color: var(--color-disabled-bg);
+  background-color: #615f5f80;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2%;
+  min-width: 64px;
+  min-height: 64px;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 25%;
+  aspect-ratio: 1/1;
 }
 
-.loader {
-  width: 100%;
-  height: 100%;
-  --circumference: calc(2 * 45 * pi);
+.loaderPokeball {
+  width: 50%;
+  height: 50%;
+  border-radius: 100%;
+  background: linear-gradient(to bottom, red 0%, red 46.5%, black 46.5%, black 53.5%, white 53.5%, white 100%);
+  aspect-ratio: 1/1;
+  position: relative;
+  z-index: 0;
+  filter: blur(0.03em);
+  animation: load 3s linear infinite;
+}
+.loaderPokeball::before,
+.loaderPokeball::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.loaderCircle {
-  fill: none;
-  stroke: var(--color-symbol);
-  stroke-width: 10;
-  stroke-linecap: round;
-  transform: rotate(270deg);
-  transform-origin: 50%;
-  stroke-dasharray: calc(var(--circumference) / 4) calc(3 * var(--circumference) / 4);
-  stroke-dashoffset: var(--circumference);
-  animation: dash 5s linear infinite;
+.loaderPokeballButton {
+  position: absolute;
+  top: 50%;
+  left: 99%;
+  transform: translate(-80%, -50%);
+  height: 25%;
+  width: 5%;
+  background-color: black;
+  z-index: 1;
+  border-radius: 25%;
+}
+.loaderPokeballButton::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 85%;
+  background-color: white;
+  border-radius: 25%;
 }
 
-@keyframes dash {
+@keyframes load {
   0%,
-  12.5% {
-    stroke-dashoffset: calc(var(--circumference));
-  }
-  25%,
-  37.5% {
-    stroke-dashoffset: calc(var(--circumference) * 0.75);
-  }
-  50%,
-  62.5% {
-    stroke-dashoffset: calc((var(--circumference) * 0.5));
-  }
-  75%,
-  87.5% {
-    stroke-dashoffset: calc((var(--circumference) * 0.25));
-  }
   100% {
-    stroke-dashoffset: 0;
+    transform: translate(0%, 0%) rotate(0deg);
+  }
+  20% {
+    transform: translate(50%, 50%) rotate(90deg);
+  }
+  40% {
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  60% {
+    transform: translate(-50%, 50%) rotate(90deg);
+  }
+  80% {
+    transform: translate(50%, -50%) rotate(-90deg);
   }
 }
 
-/* 
-@keyframes dash {
-  0%,
-  12.5% {
-    stroke-dasharray: 270, 360;
-    stroke-dashoffset: 0;
+@media (prefers-reduced-motion) {
+  .loaderPokeball {
+    animation: load 10s linear infinite;
   }
-  25%,
-  37.5% {
-    stroke-dasharray: 360, 90;
-    stroke-dashoffset: 360;
-  }
-  50%,
-  62.5% {
-    stroke-dasharray: 90, 180;
-    stroke-dashoffset: 90;
-  }
-  75%,
-  87.5% {
-  }
-  100% {
-  }
-} */
+}
