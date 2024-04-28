@@ -1,4 +1,5 @@
-const networkError = (response) => new Error(`Network Response Error: ${response.status} ${response.text}`);
+const networkError = (response) =>
+  new Error(`Network Response Error: ${response.status} ${response.text}`);
 
 const POKEAPI = "https://pokeapi.co/api/v2";
 
@@ -23,8 +24,10 @@ async function fetchPokemonById(id) {
     if (!response.ok) throw networkError(response);
     const data = await response.json();
     return {
+      id: data.id,
       name: data.name,
-      svg: data.sprites.front_default,
+      type: data.types[0].type.name,
+      img: data.sprites.front_default,
       cry: data.cries.legacy ?? data.cries.latest,
     };
   } catch (error) {
@@ -32,10 +35,11 @@ async function fetchPokemonById(id) {
   }
 }
 
-async function fetchRandomPokemonData(quantity) {
-  const pokemon = [];
-  while (pokemon.length < quantity) pokemon.push(await fetchPokemonById(getRandomId()));
-  return pokemon;
+export default async function fetchRandomPokemonData(quantity) {
+  const pokemon = new Map();
+  while (pokemon.size < quantity) {
+    const data = await fetchPokemonById(getRandomId());
+    pokemon.set(data.id, data);
+  }
+  return Array.from(pokemon.values());
 }
-
-console.log(await fetchRandomPokemonData(10));

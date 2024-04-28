@@ -22,6 +22,26 @@
   --color-disabled-bg: #615f5f80;
   --color-disabled-content: #0000004d;
   --color-disabled-border: #0000001a;
+
+  --color-pokemon-yellow: #ffcc00;
+  --type-normal: #a8a878;
+  --type-fire: #f08030;
+  --type-water: #6890f0;
+  --type-electric: #f8d030;
+  --type-grass: #78c850;
+  --type-ice: #98d8d8;
+  --type-fighting: #c03028;
+  --type-poison: #a040a0;
+  --type-ground: #e0c068;
+  --type-flying: #a890f0;
+  --type-psychic: #f85888;
+  --type-bug: #a8b820;
+  --type-rock: #b8a038;
+  --type-ghost: #705898;
+  --type-dragon: #7038f8;
+  --type-dark: #705848;
+  --type-steel: #b8b8d0;
+  --type-fairy: #ee99ac;
 }
 
 body {
@@ -33,29 +53,14 @@ body {
   background-position: center;
 }
 
-.button {
+button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-primary);
   font-weight: bold;
   border-radius: 25%;
   padding: 0.15em;
-  border: 2px solid var(--color-symbol);
 }
-.button.disabled {
-  background-color: #ffffff80;
-  color: #0000004d;
-  border: 2px solid #0000001a;
-}
-
-.button:hover {
-  fill: var(--color-primary);
-  background-color: var(--color-symbol);
-  border-color: var(--color-primary);
-  box-shadow: 0 0 2px 2px var(--color-symbol);
-}
-
 svg {
   width: 32px;
   height: 32px;
