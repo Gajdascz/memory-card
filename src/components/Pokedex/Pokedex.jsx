@@ -1,8 +1,20 @@
+import PropTypes from "prop-types";
 import styles from "./Pokedex.module.css";
+import { useState } from "react";
 
-export default function Pokedex({ foundCount, totalCount }) {
+Pokedex.propTypes = {
+  dexEntries: PropTypes.object,
+  found: PropTypes.number,
+  entries: PropTypes.array,
+};
+
+export default function Pokedex({ dexEntries }) {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <button className={styles.case}>
+    <button
+      className={`${styles.case} ${isOpen ? `${styles.viewing}` : `${styles.down}`}`}
+      onClick={() => setIsOpen(!isOpen)}
+    >
       <div className={styles.top}>
         <div className={styles.dexterLight} />
         <div className={styles.batteryIndicators}>
@@ -18,9 +30,8 @@ export default function Pokedex({ foundCount, totalCount }) {
             <div className={styles.monitorBrightness} />
           </div>
           <div className={styles.monitorScreen}>
-            <p className={styles.foundCount}>{foundCount}</p>
-            <p>/</p>
-            <p className={styles.totalCount}>{totalCount}</p>
+            <p className={styles.foundCount}>{dexEntries.found}</p>
+            <p className={styles.totalCount}>{dexEntries.entries.length}</p>
           </div>
           <div className={styles.monitorBottom}>
             <div className={styles.monitorIndicator} />

@@ -28,7 +28,6 @@ async function fetchPokemonById(id) {
       name: data.name,
       type: data.types[0].type.name,
       img: data.sprites.front_default,
-      cry: data.cries.legacy ?? data.cries.latest,
     };
   } catch (error) {
     console.error(`Pokemon Fetch Error: ${error}`);
