@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
-import styles from "./StatsDisplay.module.css";
+import styles from "./Stats.module.css";
 
-StatsDisplay.propTypes = {
+Stats.propTypes = {
   currentScore: PropTypes.number,
   highestScore: PropTypes.number,
   currentRound: PropTypes.number,
   highestRound: PropTypes.number,
 };
 
-export default function StatsDisplay({ currentScore, currentRound, highestScore, highestRound }) {
+export default function Stats({ currentScore, currentRound, highestScore, highestRound }) {
   return (
     <div className={styles.container}>
       <h2 className={styles.displayHeader}>Stats</h2>
@@ -24,6 +24,7 @@ export default function StatsDisplay({ currentScore, currentRound, highestScore,
           <p className={styles.stat}>round: {highestRound}</p>
         </div>
       </div>
+      <button className={styles.endRunButton}>End Run</button>
     </div>
   );
 }

@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
-import styles from "./HeaderButton.module.css";
+import styles from "./InfoPanelButton.module.css";
 
-HeaderButton.propTypes = {
+InfoPanelButton.propTypes = {
   className: PropTypes.string,
   isToggle: PropTypes.bool,
   isActive: PropTypes.bool,
   children: PropTypes.node,
 };
 
-export default function HeaderButton({
+export default function InfoPanelButton({
   className,
   isToggle,
   isActive = null,

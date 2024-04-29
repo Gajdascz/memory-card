@@ -35,7 +35,7 @@ async function fetchPokemonById(id) {
   }
 }
 
-export default async function fetchRandomPokemonData(quantity) {
+async function fetchRandomPokemonData(quantity) {
   const pokemon = new Map();
   while (pokemon.size < quantity) {
     const data = await fetchPokemonById(getRandomId());
@@ -43,3 +43,5 @@ export default async function fetchRandomPokemonData(quantity) {
   }
   return Array.from(pokemon.values());
 }
+
+export { fetchRandomPokemonData, maxId };

@@ -9,21 +9,14 @@
 :root {
   --color-symbol: #000000;
 
-  --color-primary: #c4f0c2;
-  --color-primary-translucent: #c4f0c2cc;
-  --color-primary-muted: #e6f2e1;
-  --color-primary-darker: #8cb291;
-
-  --color-secondary: #ffcc00;
-  --color-secondary-translucent: #ffcc00cc;
-  --color-secondary-muted: #ffeca0;
-  --color-secondary-darker: #cc9200;
-
-  --color-disabled-bg: #615f5f80;
-  --color-disabled-content: #0000004d;
-  --color-disabled-border: #0000001a;
-
   --color-pokemon-yellow: #ffcc00;
+  --color-pokemon-yellow-translucent: #ffcc00aa;
+
+  --color-pokemon-blue: #0a285f;
+  --color-pokemon-blue-translucent: #0a285faa;
+
+  --focus-outline: 5px dashed var(--color-symbol);
+
   --type-normal: #a8a878;
   --type-fire: #f08030;
   --type-water: #6890f0;
@@ -48,9 +41,10 @@ body {
   color: var(--color-symbol);
   fill: var(--color-symbol);
   font-family: "retro-pixelated";
-  background-image: url("../../app-bg.webp");
+  background-image: url("../../app-bg.webp"), url("../../app-bg2.webp");
   background-size: cover;
-  background-position: center;
+  background-position: top;
+  background-repeat: no-repeat, repeat-y;
 }
 
 button {

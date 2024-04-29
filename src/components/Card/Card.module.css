@@ -1,31 +1,36 @@
 .card {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  padding: 0.25em;
   border-radius: 10px;
-  border: 10px solid var(--color-pokemon-yellow);
+  border: 5px solid var(--color-pokemon-yellow);
+  background-color: var(--color-pokemon-yellow);
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: 0.15s;
 }
 
-.cardHeader {
+.card:hover,
+.card:focus {
+  transform: scale(1.15);
+  box-shadow: 0 4px 8px black;
+}
+.card:focus {
+  outline: var(--focus-outline);
+}
+.cardBody {
   display: flex;
-  justify-content: center;
-  font-weight: bold;
+  flex-direction: column;
   width: 100%;
+  height: 100%;
+  border: 3px solid silver;
+  border-radius: 10px;
+  overflow: hidden;
 }
-
 .cardName {
-  background-color: #ffffffaa;
+  background-color: #ffffffcc;
+  border-bottom: 3px solid silver;
+  font-size: 0.9rem;
   font-weight: 650;
   padding: 0.25em;
-  border-radius: 10px;
-}
-.cardImg {
-  border-radius: 10%;
-  border: 3px solid silver;
   width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -1,0 +1,38 @@
+.button {
+  background-color: var(--color-pokemon-blue);
+  border: 3px solid var(--color-pokemon-yellow);
+}
+
+.button:focus {
+  outline: var(--focus-outline);
+}
+
+.button:hover {
+  background-color: var(--color-pokemon-yellow);
+  border-color: var(--color-pokemon-blue);
+  fill: var(--color-pokemon-blue);
+  box-shadow: 0 0 3px 3px var(--color-pokemon-yellow);
+}
+
+.on {
+  background-color: var(--color-pokemon-blue);
+}
+
+.on:hover {
+  fill: var(--color-pokemon-yellow-translucent);
+  background-color: var(--color-pokemon-blue-translucent);
+  border-color: var(--color-pokemon-yellow-translucent);
+  box-shadow: 0 0 3px 3px var(--color-pokemon-blue);
+}
+.off:hover {
+  fill: var(--color-pokemon-yellow);
+  background-color: var(--color-pokemon-blue);
+  border-color: var(--color-pokemon-yellow);
+  box-shadow: 0 0 3px 3px var(--color-pokemon-blue);
+}
+
+.off {
+  background-color: var(--color-pokemon-blue-translucent);
+  fill: var(--color-pokemon-yellow-translucent);
+  border-color: var(--color-pokemon-yellow-translucent);
+}

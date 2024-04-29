@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Loading from "../Loading/Loading";
 import CardContainer from "../CardContainer/CardContainer";
-import StatsDisplay from "../StatsDisplay/StatsDisplay";
+import StatsDisplay from "../Stats/Stats";
 
 import styles from "./GameBoard.module.css";
 import { useState } from "react";
