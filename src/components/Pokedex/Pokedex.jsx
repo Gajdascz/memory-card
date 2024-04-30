@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
+import PokedexMonitor from "./Monitor/PokedexMonitor";
 import styles from "./Pokedex.module.css";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 Pokedex.propTypes = {
   dexEntries: PropTypes.object,
@@ -10,40 +11,36 @@ Pokedex.propTypes = {
 
 export default function Pokedex({ dexEntries }) {
   const [isOpen, setIsOpen] = useState(false);
+  const closeRef = useRef();
+
+  useEffect(() => {
+    if (isOpen) closeRef.current?.focus();
+  }, [isOpen]);
+
   return (
-    <button
-      className={`${styles.case} ${isOpen ? `${styles.viewing}` : `${styles.down}`}`}
-      onClick={() => setIsOpen(!isOpen)}
-    >
-      <div className={styles.top}>
-        <div className={styles.dexterLight} />
-        <div className={styles.batteryIndicators}>
-          <div className={styles.batteryRed} />
-          <div className={styles.batteryYellow} />
-          <div className={styles.batteryGreen} />
-        </div>
-      </div>
-      <div className={styles.body}>
-        <div className={styles.monitor}>
-          <div className={styles.monitorTop}>
-            <div className={styles.monitorBrightness} />
-            <div className={styles.monitorBrightness} />
-          </div>
-          <div className={styles.monitorScreen}>
-            <p className={styles.foundCount}>{dexEntries.found}</p>
-            <p className={styles.totalCount}>{dexEntries.entries.length}</p>
-          </div>
-          <div className={styles.monitorBottom}>
-            <div className={styles.monitorIndicator} />
-            <div className={styles.monitorSpeaker}>
-              <span />
-              <span />
-              <span />
-              <span />
+    <>
+      {isOpen ? (
+        <PokedexMonitor
+          isOpen={isOpen}
+          dexEntries={dexEntries}
+          closeRef={closeRef}
+          onClose={() => setIsOpen(false)}
+        />
+      ) : (
+        <button className={`${styles.case}`} onClick={() => setIsOpen(!isOpen)}>
+          <div className={styles.top}>
+            <div className={styles.dexterLight} />
+            <div className={styles.batteryIndicators}>
+              <div className={styles.batteryRed} />
+              <div className={styles.batteryYellow} />
+              <div className={styles.batteryGreen} />
             </div>
           </div>
-        </div>
-      </div>
-    </button>
+          <div className={styles.body}>
+            <PokedexMonitor isOpen={isOpen} dexEntries={dexEntries} />
+          </div>
+        </button>
+      )}
+    </>
   );
 }

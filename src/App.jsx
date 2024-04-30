@@ -8,31 +8,13 @@ import Pokedex from "./components/Pokedex/Pokedex";
 import { useEffect, useState } from "react";
 import Stats from "./components/Stats/Stats";
 import CardContainer from "./components/CardContainer/CardContainer";
-import { maxId, fetchRandomPokemonData } from "./apis/pokeAPI";
-import loadInitialState from "./loadInitialState";
+import { fetchRandomPokemonData } from "./apis/pokeAPI";
+import { loadInitialState } from "./apis/saveData";
+import SaveInterface from "./components/SaveInterface/SaveInterface";
 const uid = () =>
   Math.floor(Math.random() ** Math.round(Math.random()) * Math.round(Math.random() * 10000));
 
 function App() {
-  const onSave = () => {
-    localStorage.setItem(
-      "save",
-      JSON.stringify({
-        settings: {
-          bgMusic,
-        },
-        session: {
-          score,
-          round,
-          ...(score > 0 && { cards: cards }),
-        },
-        progress: {
-          highest,
-          dexEntries,
-        },
-      })
-    );
-  };
   const initialState = loadInitialState();
   const [bgMusic, setBgMusic] = useState(initialState.settings.bgMusic);
 
@@ -41,10 +23,26 @@ function App() {
 
   const [round, setRound] = useState(initialState.session.round);
   const [score, setScore] = useState(initialState.session.score);
+  const [clicked, setClicked] = useState(initialState.session.clicked);
 
   const [highest, setHighest] = useState(initialState.progress.highest);
 
   const [dexEntries, setDexEntries] = useState(initialState.progress.dexEntries);
+
+  const getSaveData = () => ({
+    settings: {
+      bgMusic,
+    },
+    session: {
+      score,
+      round,
+      ...(score > 0 && { cards: cards, clicked: clicked }),
+    },
+    progress: {
+      highest,
+      dexEntries,
+    },
+  });
 
   const shuffle = () => {
     setCards((current) => {
@@ -71,6 +69,30 @@ function App() {
     fetch();
   }, [round]);
 
+  useEffect(() => {});
+
+  const onCardClick = (cardData) => {
+    const { id, name } = cardData;
+    if (clicked.has(id)) onRoundLost();
+    else {
+      setClicked(new Set(clicked).add(id));
+      if (dexEntries[id].name === null) {
+        setDexEntries((prevEntries) => {
+          const copy = [...prevEntries];
+          copy[id] = { ...copy[id], name: name };
+          return copy;
+        });
+      }
+      shuffle();
+    }
+  };
+
+  const onEndRun = () => {};
+
+  const onRoundLost = () => {};
+
+  const onRoundComplete = () => {};
+
   return (
     <div className={styles.container}>
       <InfoPanel
@@ -96,14 +118,22 @@ function App() {
           </a>,
         ]}
       >
-        <InfoPanelButton aria-label="Save progress" key={uid()} onClick={() => onSave()}>
-          Save
-        </InfoPanelButton>
-        <Stats />
+        <Stats
+          currentScore={score}
+          currentRound={round}
+          highestScore={highest.score}
+          highestRound={highest.round}
+        />
         <Pokedex foundCount={dexEntries.found} dexEntries={dexEntries} />
+        <SaveInterface getSaveData={getSaveData} />
+
         <Footer />
       </InfoPanel>
-      <CardContainer cards={cards} loading={loading} onClick={() => shuffle()} />
+      <CardContainer
+        cards={cards}
+        loading={loading}
+        onClick={(cardData) => onCardClick(cardData)}
+      />
     </div>
   );
 }

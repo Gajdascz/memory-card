@@ -15,13 +15,25 @@ export default function Stats({ currentScore, currentRound, highestScore, highes
       <div className={styles.sections}>
         <div className={styles.section}>
           <h3 className={styles.sectionHeader}>Current</h3>
-          <p className={styles.stat}>score: {currentScore}</p>
-          <p className={styles.stat}>round: {currentRound}</p>
+          <p className={styles.statWrapper}>
+            <span className={styles.statName}>score:</span>
+            <span className={styles.statNumber}>{currentScore}</span>
+          </p>
+          <p className={styles.statWrapper}>
+            <span className={styles.statName}>round:</span>
+            <span className={styles.statNumber}>{currentRound}</span>
+          </p>
         </div>
         <div className={styles.section}>
           <h3 className={styles.sectionHeader}>Highest</h3>
-          <p className={styles.stat}>score: {highestScore}</p>
-          <p className={styles.stat}>round: {highestRound}</p>
+          <p className={styles.statWrapper}>
+            <span className={styles.statName}>score:</span>
+            <span className={styles.statNumber}>{highestScore}</span>
+          </p>
+          <p className={styles.statWrapper}>
+            <span className={styles.statName}>round:</span>
+            <span className={styles.statNumber}>{highestRound}</span>
+          </p>
         </div>
       </div>
       <button className={styles.endRunButton}>End Run</button>

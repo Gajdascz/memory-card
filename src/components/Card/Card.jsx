@@ -14,18 +14,12 @@ export default function Card(props) {
   const { id, name, type, img, onClick, ...rest } = props;
 
   const handleClick = (e) => {
-    if (onClick) onClick(e);
+    if (onClick) onClick({ id, name });
     e.currentTarget.blur();
   };
 
   return (
-    <button
-      id={id}
-      className={styles.card}
-      aria-label={`${name} card`}
-      onClick={handleClick}
-      {...rest}
-    >
+    <button className={styles.card} aria-label={`${name} card`} onClick={handleClick} {...rest}>
       <div className={styles.cardBody} style={{ backgroundColor: `var(--type-${type})` }}>
         <p className={styles.cardName}>{name.charAt(0).toUpperCase() + name.slice(1)}</p>
         <img src={img} alt={name} className={styles.cardImg} />
