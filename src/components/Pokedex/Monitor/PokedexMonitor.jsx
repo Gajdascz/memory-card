@@ -20,6 +20,10 @@ export default function PokedexMonitor({ isOpen, onClose, closeRef, dexEntries }
           e.preventDefault();
           closeRef.current?.focus();
         }
+        if (e.key === "Escape") {
+          e.preventDefault();
+          onClose();
+        }
       }}
       tabIndex="-1"
     >

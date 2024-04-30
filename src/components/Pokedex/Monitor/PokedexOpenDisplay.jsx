@@ -15,7 +15,7 @@ export default function PokedexOpenDisplay({ onClose, closeRef, dexEntries }) {
         <button
           ref={closeRef}
           className={styles.viewingCloseButton}
-          onClick={(e) => onClose(false)}
+          onClick={(e) => onClose(e)}
           tabIndex={1}
         >
           Close
@@ -24,11 +24,11 @@ export default function PokedexOpenDisplay({ onClose, closeRef, dexEntries }) {
       <div className={styles.viewingEntries}>
         <p className={styles.viewingFoundText}>
           {dexEntries.found} / {dexEntries.entries.length} (
-          {dexEntries.found / dexEntries.entries.length})
+          {Math.round((dexEntries.found / dexEntries.entries.length) * 100) / 100}%)
         </p>
         <div className={styles.viewingEntriesContainer}>
           {dexEntries.entries.map((entry, index) => (
-            <p key={index} className={styles.dexEntry}>
+            <p key={index + 1} className={styles.dexEntry}>
               [{index + 1}] - {entry.name ?? "?????"}
             </p>
           ))}

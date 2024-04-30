@@ -32,7 +32,7 @@
 }
 .sectionHeader {
   border-bottom: 1px solid var(--color-pokemon-yellow);
-  padding-right: 0.25 em;
+  padding-right: 3rem;
 }
 .endRunButton {
   width: 90%;

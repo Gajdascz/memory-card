@@ -24,7 +24,7 @@ async function fetchPokemonById(id) {
     if (!response.ok) throw networkError(response);
     const data = await response.json();
     return {
-      id: data.id,
+      id: data.id - 1,
       name: data.name,
       type: data.types[0].type.name,
       img: data.sprites.front_default,

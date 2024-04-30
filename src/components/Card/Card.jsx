@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { useRef } from "react";
 import styles from "./Card.module.css";
 
 Card.propTypes = {
@@ -12,16 +11,17 @@ Card.propTypes = {
 
 export default function Card(props) {
   const { id, name, type, img, onClick, ...rest } = props;
+  const capName = name.charAt(0).toUpperCase() + name.slice(1);
 
   const handleClick = (e) => {
-    if (onClick) onClick({ id, name });
+    if (onClick) onClick({ id, name: capName });
     e.currentTarget.blur();
   };
 
   return (
     <button className={styles.card} aria-label={`${name} card`} onClick={handleClick} {...rest}>
       <div className={styles.cardBody} style={{ backgroundColor: `var(--type-${type})` }}>
-        <p className={styles.cardName}>{name.charAt(0).toUpperCase() + name.slice(1)}</p>
+        <p className={styles.cardName}>{capName}</p>
         <img src={img} alt={name} className={styles.cardImg} />
       </div>
     </button>

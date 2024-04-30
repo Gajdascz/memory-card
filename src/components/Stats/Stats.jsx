@@ -6,9 +6,16 @@ Stats.propTypes = {
   highestScore: PropTypes.number,
   currentRound: PropTypes.number,
   highestRound: PropTypes.number,
+  onEndRun: PropTypes.func,
 };
 
-export default function Stats({ currentScore, currentRound, highestScore, highestRound }) {
+export default function Stats({
+  currentScore,
+  currentRound,
+  highestScore,
+  highestRound,
+  onEndRun,
+}) {
   return (
     <div className={styles.container}>
       <h2 className={styles.displayHeader}>Stats</h2>
@@ -36,7 +43,9 @@ export default function Stats({ currentScore, currentRound, highestScore, highes
           </p>
         </div>
       </div>
-      <button className={styles.endRunButton}>End Run</button>
+      <button className={styles.endRunButton} onClick={onEndRun}>
+        End Run
+      </button>
     </div>
   );
 }

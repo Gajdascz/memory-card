@@ -1,21 +1,13 @@
 import PropTypes from "prop-types";
 import styles from "./CardContainer.module.css";
-import Card from "../Card/Card";
 import Loading from "../Loading/Loading";
 
 CardContainer.propTypes = {
   cards: PropTypes.array,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
+  children: PropTypes.node,
 };
-export default function CardContainer({ cards, loading, onClick }) {
-  return (
-    <div className={styles.container}>
-      {loading ? (
-        <Loading />
-      ) : (
-        cards.map((card) => <Card key={card.id} {...card} onClick={onClick} />)
-      )}
-    </div>
-  );
+export default function CardContainer({ loading, children }) {
+  return <div className={styles.container}>{loading ? <Loading /> : children}</div>;
 }

@@ -1,15 +1,16 @@
 import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from "react";
 import styles from "./SaveInterface.module.css";
-import { save, importSave, clearSave, getStr, sub, unsub } from "../../apis/saveData";
+import { save, importSave, clearSave, getSaveStr, sub, unsub } from "../../apis/saveData";
 
 SaveInterface.propTypes = {
   getSaveData: PropTypes.func,
+  onSync: PropTypes.func,
 };
 
-export default function SaveInterface({ getSaveData }) {
+export default function SaveInterface({ getSaveData, onSync }) {
   const downloadRef = useRef();
-  const [data, setData] = useState(getStr());
+  const [data, setData] = useState(getSaveStr());
 
   useEffect(() => {
     sub(setData);
@@ -18,7 +19,7 @@ export default function SaveInterface({ getSaveData }) {
 
   useEffect(() => {
     let url;
-    if (data.length > 0) {
+    if (data && data.length > 0) {
       const blob = new Blob([data], { type: "application/json" });
       url = URL.createObjectURL(blob);
       downloadRef.current.href = url;
@@ -35,7 +36,7 @@ export default function SaveInterface({ getSaveData }) {
         Save
       </button>
 
-      {data.length > 0 && (
+      {data && data.length > 0 && (
         <a className={styles.button} ref={downloadRef}>
           Export
         </a>
@@ -45,11 +46,26 @@ export default function SaveInterface({ getSaveData }) {
         <input
           id="save-import"
           type="file"
-          onChange={(e) => importSave(e.target.files[0])}
+          onChange={async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            try {
+              await importSave(file);
+              onSync();
+            } catch (error) {
+              console.error("Error importing file:", error);
+            }
+          }}
           accept=".json"
         />
       </label>
-      <button className={`${styles.button} ${styles.resetButton}`} onClick={() => clearSave()}>
+      <button
+        className={`${styles.button} ${styles.resetButton}`}
+        onClick={() => {
+          clearSave();
+          onSync();
+        }}
+      >
         Reset
       </button>
     </div>
