@@ -16,33 +16,35 @@ export default function Stats() {
   return (
     <div className={styles.container}>
       <h2 className={styles.displayHeader}>Stats</h2>
-      <div className={styles.sections}>
-        <div className={styles.section}>
-          <h3 className={styles.sectionHeader}>Current</h3>
-          <p className={styles.statWrapper}>
-            <span className={styles.statName}>score:</span>
-            <span className={styles.statNumber}>{score}</span>
-          </p>
-          <p className={styles.statWrapper}>
-            <span className={styles.statName}>round:</span>
-            <span className={styles.statNumber}>{round}</span>
-          </p>
+      <div className={styles.statsContentContainer}>
+        <div className={styles.sections}>
+          <div className={styles.section}>
+            <h3 className={styles.sectionHeader}>Current</h3>
+            <p className={styles.statWrapper}>
+              <span className={styles.statName}>score:</span>
+              <span className={styles.statNumber}>{score}</span>
+            </p>
+            <p className={styles.statWrapper}>
+              <span className={styles.statName}>round:</span>
+              <span className={styles.statNumber}>{round}</span>
+            </p>
+          </div>
+          <div className={styles.section}>
+            <h3 className={styles.sectionHeader}>Highest</h3>
+            <p className={styles.statWrapper}>
+              <span className={styles.statName}>score:</span>
+              <span className={styles.statNumber}>{highest.score}</span>
+            </p>
+            <p className={styles.statWrapper}>
+              <span className={styles.statName}>round:</span>
+              <span className={styles.statNumber}>{highest.round}</span>
+            </p>
+          </div>
         </div>
-        <div className={styles.section}>
-          <h3 className={styles.sectionHeader}>Highest</h3>
-          <p className={styles.statWrapper}>
-            <span className={styles.statName}>score:</span>
-            <span className={styles.statNumber}>{highest.score}</span>
-          </p>
-          <p className={styles.statWrapper}>
-            <span className={styles.statName}>round:</span>
-            <span className={styles.statNumber}>{highest.round}</span>
-          </p>
-        </div>
+        <button className={styles.endRunButton} onClick={onEndRun}>
+          End Run
+        </button>
       </div>
-      <button className={styles.endRunButton} onClick={onEndRun}>
-        End Run
-      </button>
     </div>
   );
 }

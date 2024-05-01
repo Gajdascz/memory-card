@@ -39,7 +39,7 @@ export default function InfoPanel({ headerText, children }) {
           </button>
         </a>
       </div>
-      {children}
+      <div className={styles.childrenContainer}>{children}</div>
     </header>
   );
 }

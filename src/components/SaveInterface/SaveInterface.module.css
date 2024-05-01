@@ -43,3 +43,9 @@ input[type="file"] {
   border-color: black;
   box-shadow: 0 0 3px 3px #ff6868;
 }
+
+@media (width <= 775px) {
+  .container {
+    flex-direction: column;
+  }
+}
