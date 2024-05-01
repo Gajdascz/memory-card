@@ -1,17 +1,6 @@
 import styles from "./Footer.module.css";
 import Icon from "../Icon/Icon";
 
-const GhIconLink = () => (
-  <a
-    className="button"
-    href="https://github.com/Gajdascz"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Icon type="gitHub" />
-  </a>
-);
-
 export default function Footer() {
   return (
     <footer className={styles.container}>
@@ -21,6 +10,9 @@ export default function Footer() {
           <p className={styles.copyrightYear}>2024</p>
         </div>
         <p className={styles.author}>Nolan Gajdascz</p>
+        <p className={styles.disclaimer}>
+          Pokémon and Pokémon character names are trademarks of Nintendo.
+        </p>
       </div>
     </footer>
   );

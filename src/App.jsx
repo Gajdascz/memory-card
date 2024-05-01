@@ -12,8 +12,8 @@ function App() {
     <GameProvider>
       <div className={styles.container}>
         <InfoPanel headerText="Pokémem">
-          <Stats />
-          <Pokedex />
+          {/* <Stats />
+          <Pokedex /> */}
           <SaveInterface />
           <Footer />
         </InfoPanel>

@@ -1,4 +1,5 @@
 .container {
+  width: min-content;
   display: flex;
   flex-direction: column;
   background-color: var(--color-pokemon-blue-translucent);
@@ -11,4 +12,58 @@
 .buttonsContainer {
   display: flex;
   gap: 0.5em;
+}
+
+.button {
+  border: 3px solid var(--color-pokemon-yellow);
+  color: var(--color-pokemon-yellow);
+}
+
+.button > svg,
+.button.off:hover > svg {
+  fill: var(--color-pokemon-yellow);
+}
+.button:hover > svg {
+  fill: var(--color-pokemon-blue);
+}
+.button:focus {
+  outline: var(--focus-outline);
+}
+
+.button:hover {
+  background-color: var(--color-pokemon-yellow);
+  color: var(--color-pokemon-blue);
+  border-color: var(--color-pokemon-blue);
+  box-shadow: 0 0 3px 3px var(--color-pokemon-yellow);
+}
+.button,
+.on,
+.off:hover {
+  background-color: var(--color-pokemon-blue);
+}
+
+.on:hover,
+.off {
+  background-color: var(--color-pokemon-blue-translucent);
+  border-color: var(--color-pokemon-yellow-translucent);
+}
+.button.on:hover > svg,
+.button.off > svg {
+  fill: var(--color-pokemon-yellow-translucent);
+}
+.off:hover {
+  border-color: var(--color-pokemon-yellow);
+}
+
+.on:hover,
+.off:hover {
+  box-shadow: 0 0 3px 3px var(--color-pokemon-blue);
+}
+
+@media (width <= 775px) {
+  .container {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
