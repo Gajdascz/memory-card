@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import { GameContext } from "../../contexts/game/GameContext";
 import styles from "./Card.module.css";
 
 Card.propTypes = {
@@ -10,18 +12,21 @@ Card.propTypes = {
 };
 
 export default function Card(props) {
-  const { id, name, type, img, onClick, ...rest } = props;
+  const { onCardClick } = useContext(GameContext);
+  const { id, name, type, img, ...rest } = props;
   const capName = name.charAt(0).toUpperCase() + name.slice(1);
 
-  const handleClick = (e) => {
-    if (onClick) onClick({ id, name: capName });
-    e.currentTarget.blur();
-  };
-
   return (
-    <button className={styles.card} aria-label={`${name} card`} onClick={handleClick} {...rest}>
+    <button
+      className={styles.card}
+      onClick={(e) => {
+        onCardClick({ id, name });
+        e.currentTarget.blur();
+      }}
+      {...rest}
+    >
       <div className={styles.cardBody} style={{ backgroundColor: `var(--type-${type})` }}>
-        <p className={styles.cardName}>{capName}</p>
+        <h3 className={styles.cardName}>{capName}</h3>
         <img src={img} alt={name} className={styles.cardImg} />
       </div>
     </button>

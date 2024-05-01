@@ -8,7 +8,6 @@ const data = {
   emit: () => data.subscribers.forEach((sub) => sub(data.current)),
   getSaveStr: () => data.current,
   update: (jsonStr) => {
-    console.log(jsonStr);
     localStorage.setItem("save", jsonStr);
     data.current = jsonStr;
     data.emit();

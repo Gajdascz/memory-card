@@ -1,14 +1,15 @@
 import PropTypes from "prop-types";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
+import { GameContext } from "../../contexts/game/GameContext";
 import styles from "./SaveInterface.module.css";
 import { save, importSave, clearSave, getSaveStr, sub, unsub } from "../../apis/saveData";
-
 SaveInterface.propTypes = {
   getSaveData: PropTypes.func,
   onSync: PropTypes.func,
 };
 
-export default function SaveInterface({ getSaveData, onSync }) {
+export default function SaveInterface() {
+  const { getCurrentGameData, syncState } = useContext(GameContext);
   const downloadRef = useRef();
   const [data, setData] = useState(getSaveStr());
 
@@ -23,7 +24,7 @@ export default function SaveInterface({ getSaveData, onSync }) {
       const blob = new Blob([data], { type: "application/json" });
       url = URL.createObjectURL(blob);
       downloadRef.current.href = url;
-      downloadRef.current.download = "data.json";
+      downloadRef.current.download = `save.json`;
     }
     return () => {
       if (url) URL.revokeObjectURL(url);
@@ -32,7 +33,7 @@ export default function SaveInterface({ getSaveData, onSync }) {
 
   return (
     <div className={styles.container}>
-      <button className={styles.button} onClick={() => save(getSaveData())}>
+      <button className={styles.button} onClick={() => save(getCurrentGameData())}>
         Save
       </button>
 
@@ -51,7 +52,7 @@ export default function SaveInterface({ getSaveData, onSync }) {
             if (!file) return;
             try {
               await importSave(file);
-              onSync();
+              syncState();
             } catch (error) {
               console.error("Error importing file:", error);
             }
@@ -63,7 +64,7 @@ export default function SaveInterface({ getSaveData, onSync }) {
         className={`${styles.button} ${styles.resetButton}`}
         onClick={() => {
           clearSave();
-          onSync();
+          syncState();
         }}
       >
         Reset

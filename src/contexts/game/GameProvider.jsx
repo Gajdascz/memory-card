@@ -66,7 +66,8 @@ export default function GameProvider({ children, initialState = getSaveObj() }) 
       runNumber,
       score,
       round,
-      ...(score > 0 && { cards: cards, clicked: Array.from(clicked) }),
+      cards: score > 0 ? cards : [],
+      clicked: score > 0 ? Array.from(clicked) : [],
     },
     progress: {
       highest,
@@ -129,6 +130,13 @@ export default function GameProvider({ children, initialState = getSaveObj() }) 
 
   const value = {
     loading,
+    bgMusic,
+    setBgMusic,
+    score,
+    round,
+    highest,
+    dexEntries,
+    cards,
     onCardClick,
     onEndRun,
     syncState,

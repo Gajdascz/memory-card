@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 import PokedexMonitor from "./Monitor/PokedexMonitor";
 import styles from "./Pokedex.module.css";
-import { useState, useRef, useEffect } from "react";
+
+import { useState, useRef, useEffect, useContext } from "react";
+import { GameContext } from "../../contexts/game/GameContext";
 
 Pokedex.propTypes = {
   dexEntries: PropTypes.object,
@@ -9,7 +11,8 @@ Pokedex.propTypes = {
   entries: PropTypes.array,
 };
 
-export default function Pokedex({ dexEntries }) {
+export default function Pokedex() {
+  const { dexEntries } = useContext(GameContext);
   const [isOpen, setIsOpen] = useState(false);
   const closeRef = useRef();
 
