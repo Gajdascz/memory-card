@@ -9,16 +9,16 @@ Card.propTypes = {
   type: PropTypes.string,
   img: PropTypes.string,
   onClick: PropTypes.func,
+  size: PropTypes.oneOf(["s", "m", "l"]),
 };
 
-export default function Card(props) {
+export default function Card({ id, name, type, img, size, ...rest }) {
   const { onCardClick } = useContext(GameContext);
-  const { id, name, type, img, ...rest } = props;
   const capName = name.charAt(0).toUpperCase() + name.slice(1);
 
   return (
     <button
-      className={styles.card}
+      className={`${styles.card} ${size === "l" ? styles.large : size === "m" ? styles.medium : styles.small}`}
       onClick={(e) => {
         onCardClick({ id, name });
         e.currentTarget.blur();

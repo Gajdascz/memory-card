@@ -32,7 +32,7 @@ export default function GameProvider({ children, initialState = getSaveObj() }) 
     const fetch = async () => {
       setLoading(true);
       try {
-        const response = await fetchRandomPokemonData(50 + round * 2);
+        const response = await fetchRandomPokemonData(10 + round * 2);
         setCards(response);
       } catch (error) {
         console.error(`Failed to fetch cards: ${error}`);

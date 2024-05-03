@@ -1,10 +1,18 @@
+import PropTypes from "prop-types";
 import styles from "./Footer.module.css";
 import Icon from "../Icon/Icon";
 
-export default function Footer() {
+Footer.propTypes = {
+  className: PropTypes.string,
+  copyrightOrientation: PropTypes.oneOf(["vertical", "horizontal"]),
+};
+
+export default function Footer({ className, copyrightOrientation }) {
   return (
-    <footer className={styles.container}>
-      <div className={styles.copyright}>
+    <footer className={className ? className : styles.container}>
+      <div
+        className={`${styles.copyright} ${copyrightOrientation === "horizontal" ? styles.horizontal : styles.vertical}`}
+      >
         <div className={styles.copyrightIconYear}>
           <Icon type="copyright" className={styles.copyrightIcon} />
           <p className={styles.copyrightYear}>2024</p>

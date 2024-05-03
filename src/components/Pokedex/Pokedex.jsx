@@ -6,12 +6,10 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { GameContext } from "../../contexts/game/GameContext";
 
 Pokedex.propTypes = {
-  dexEntries: PropTypes.object,
-  found: PropTypes.number,
-  entries: PropTypes.array,
+  className: PropTypes.string,
 };
 
-export default function Pokedex() {
+export default function Pokedex({ className }) {
   const { dexEntries } = useContext(GameContext);
   const [isOpen, setIsOpen] = useState(false);
   const closeRef = useRef();
@@ -30,7 +28,10 @@ export default function Pokedex() {
           onClose={() => setIsOpen(false)}
         />
       ) : (
-        <button className={`${styles.case}`} onClick={() => setIsOpen(!isOpen)}>
+        <button
+          className={`${styles.case}${className && ` ${className}`}`}
+          onClick={() => setIsOpen(!isOpen)}
+        >
           <div className={styles.top}>
             <div className={styles.dexterLight} />
             <div className={styles.batteryIndicators}>

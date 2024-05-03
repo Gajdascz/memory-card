@@ -9,6 +9,7 @@
   border-radius: 10px;
   padding: 0.5em;
   width: fit-content;
+  color: var(--color-pokemon-yellow);
 }
 .sections {
   display: flex;
@@ -19,28 +20,20 @@
   padding: 0.5em;
 }
 
-.displayHeader {
-  border-bottom: 1px solid var(--color-pokemon-yellow);
-  padding-left: 0.25em;
-  width: 100%;
-  text-align: center;
-  padding: 0.25em;
-}
-
 .section {
   display: flex;
   flex-direction: column;
 }
 .sectionHeader {
   border-bottom: 1px solid var(--color-pokemon-yellow);
-  padding-right: 3rem;
+  padding-right: 2.5rem;
 }
 .endRunButton {
   width: 90%;
   background-color: var(--color-pokemon-blue);
   color: var(--color-pokemon-yellow);
   border: 3px solid var(--color-pokemon-yellow);
-  padding: 0.25em;
+  padding: 0.5em;
 }
 .endRunButton:hover {
   background-color: var(--color-pokemon-yellow);
@@ -54,7 +47,7 @@
   justify-content: space-between;
 }
 
-@media (width <= 775px) {
+/* @media (width <= 775px) {
   .container {
     color: var(--color-pokemon-yellow);
     font-size: 0.75rem;
@@ -70,8 +63,8 @@
     width: 100%;
     padding: 0.5em;
   }
-}
-
+} */
+/* 
 @media (width < 500px) {
   .container {
     width: 100%;
@@ -90,4 +83,4 @@
   .displayHeader {
     display: none;
   }
-}
+} */

@@ -3,12 +3,12 @@ import { useEffect, useRef, useState, useContext } from "react";
 import { GameContext } from "../../contexts/game/GameContext";
 import styles from "./SaveInterface.module.css";
 import { save, importSave, clearSave, getSaveStr, sub, unsub } from "../../apis/saveData";
+
 SaveInterface.propTypes = {
-  getSaveData: PropTypes.func,
-  onSync: PropTypes.func,
+  className: PropTypes.string,
 };
 
-export default function SaveInterface() {
+export default function SaveInterface({ className }) {
   const { getCurrentGameData, syncState } = useContext(GameContext);
   const downloadRef = useRef();
   const [data, setData] = useState(getSaveStr());
@@ -32,7 +32,7 @@ export default function SaveInterface() {
   }, [data]);
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container}${className && ` ${className}`}`}>
       <button className={styles.button} onClick={() => save(getCurrentGameData())}>
         Save
       </button>
