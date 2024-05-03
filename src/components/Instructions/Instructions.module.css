@@ -45,3 +45,27 @@
   border-color: var(--color-pokemon-blue);
   box-shadow: 0 0 3px 3px var(--color-pokemon-yellow);
 }
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+}
+.subsection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.subsectionHeader {
+  justify-self: center;
+  align-self: center;
+  border-bottom: 3px solid var(--color-pokemon-yellow);
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.subsectionText {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-left: 1em;
+}
