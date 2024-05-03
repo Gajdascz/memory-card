@@ -6,6 +6,8 @@ But be careful! Clicking the same card twice in a round will reset your progress
 
 Developed as part of [The Odin Project curriculum](https://www.theodinproject.com/lessons/node-path-react-new-memory-card), the game showcases my ever-growing expertise and hands-on experience with React principles like hooks, state management, and component-based architecture.
 
+**Live Preview:** [Hosted on Cloudflare Pages](https://pokemem.pages.dev)
+
 ## Learning Outcomes
 
 This project provided hands-on practice with many React principles, including:
