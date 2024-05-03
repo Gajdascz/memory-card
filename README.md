@@ -18,6 +18,10 @@ This project provided hands-on practice with many React principles, including:
 - **Additional Learning:**
   - **Nuanced Data Persistence:** Built a central save data API with a publisher/subscriber pattern to manage local storage data.
     - **Save Interface:** Combines the API's subscriber pattern and React's useEffect hook to subscribe on mount and unsubscribe on unmount.
+  - **React Suspense:** Learned about React's lazy loading and Suspense component that allows a fallback to be display until it's children have finished loading.
+    - **Loader:** Created a CSS Pokeball animation as a loading indicator.
+  - **Asynchronous Programming:** Used async/await syntax with `useEffect` to communicate with PokeAPI.
+  - **Advanced CSS:** Created a mock Pokedex using CSS' clip-path polygons and pseudo properties.
   - **React Context:** Centralized state management to reduce prop-drilling and maintain a single source of truth.
   - **Audio:** Edited royalty-free music for looping playback using audacity, implemented using the <audio> element and managed with React state.
   - **Module based CSS:** Utilized module-based CSS stylesheets to prevent naming collisions and simplify styles management.

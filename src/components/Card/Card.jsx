@@ -8,7 +8,6 @@ Card.propTypes = {
   name: PropTypes.string,
   type: PropTypes.string,
   img: PropTypes.string,
-  onClick: PropTypes.func,
   size: PropTypes.oneOf(["s", "m", "l"]),
 };
 

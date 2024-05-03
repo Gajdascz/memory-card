@@ -21,8 +21,6 @@
   fill: var(--color-pokemon-yellow);
   gap: 1em;
 }
-.infoPanel.xWide {
-}
 .infoPanel.wide {
   grid-row: 1;
 }
@@ -148,7 +146,5 @@
 }
 .footer.wide {
   grid-row: 3;
-}
-.footer.skinny {
 }
 /*#endregion*/
